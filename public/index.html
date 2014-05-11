@@ -1,0 +1,58 @@
+﻿<!--index.html-->
+
+<html lang="en" ng-app="simpleTodo">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Node/Angular SPA Simple todo</title>
+
+  <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css" />
+  <style>
+    html                { overflow-y: scroll; }
+    body                { padding-top: 50px; }
+    #todo-list          { margin-bottom: 30px; }
+  </style>
+
+</head>
+<body ng-controller="mainController">
+  <div class="container">
+
+    <!-- header and todo count -->
+    <div class="jumbotron text-center">
+      <h1>I'm a Todo-aholic <span class="label label-info">{{ todos.length }}</span></h1>
+    </div>
+
+    <!-- todo list -->
+    <div id="todo-list" class="row">
+      <div class="col-sm-4 col-sm-offset-4">
+        <div class="checkbox" ng-repeat="todo in todos">
+          <label>
+            <input type="checkbox" ng-click="deleteTodo(todo._id)" /> {{ todo.text }}
+          </label>
+        </div>
+      </div>
+    </div>
+  
+    <!-- from to create todo -->
+    <div id="todo-form" class="row">
+      <div class="col-sm-8 col-sm-offset-2 text-center">
+        <form>
+          <div class="form-group">
+            
+            <!-- bind this value to formData.text in angular -->
+            <input type="text" class="form-control input-lg text-center" placeholder="I want to buy car seat!" ng-model="formData.text"/>
+          </div>
+          
+          <!-- createTodo() will create new todos -->
+          <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+        </form>
+      </div>
+    </div>
+
+  </div> <!-- end container -->
+  <script src="libs/jquery/dist/jquery.min.js"></script>
+  <script src="libs/angular/angular.min.js"></script>
+  <script src="js/core.js"></script>
+</body>
+</html>
